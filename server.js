@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 const port = 8000;
-const jwt = require("jsonwebtoken");
 const cookieParser = require('cookie-parser');
 
 app.use(cookieParser());

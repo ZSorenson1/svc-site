@@ -27,18 +27,23 @@ const ShowForm = props => {
             setShow({venue: show.venue, city: e.target.value, date: show.date, price: show.price})
         }
         if(e.target.name == "date"){
-            setShow({venue: show.venue, city: show.city, date: e.target.value, price: show.price})
+            setShow({venue: show.venue, city: show.city, date: dateFormatter(e.target.value), price: show.price})
         }
         if(e.target.name == "price"){
             setShow({venue: show.venue, city: show.city, date: show.date, price: e.target.value})
         }
-        console.log(show)
+        console.log(show);
     }
 
     const dateFormatter = (d) => {
         if(loaded){
         var date = new Date(d)
-        var output = date.getFullYear()+"-"+ (date.getMonth()+1)+"-"+date.getDate()+"T"+date.getHours()+":"+date.getMinutes();
+        var day = date.getDate()
+        if(date.getDate().toString().length < 2){
+            day = "0"+date.getDate().toString();
+        }
+
+        var output = date.getFullYear()+"-"+ (date.getMonth()+1)+"-"+day+"T"+date.getHours()+":"+date.getMinutes();
         console.log(output)
         return output;
         }
