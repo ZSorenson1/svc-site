@@ -1,1 +1,1 @@
-
+A website for a local Orlando band built using the MERN stack. The express.js backend utilizes MongoDB, bcrypt, and JSON Web Token to create an admin account that allows the band to perform CRUD commands for a list of concerts and edit their band description from the frontend after logging in while keeping the admin panel inaccessible to normal visitors. Employs @reach/router for routing to different views, slick-carousel to create an image slideshow on the front page and bootstrap for ease of styling.
