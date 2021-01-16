@@ -5,10 +5,10 @@ const ShowForm = props => {
     const { onSubmitProp, initShow } = props;
     const [ show, setShow ] = useState([])
     const [loaded, setLoaded] = useState(false);
-    
+    const currDate = new Date();
 
     useEffect( () => {
-        setShow(initShow);
+        setShow(initShow) 
         setLoaded(true);
         
     }, [initShow]
@@ -27,7 +27,7 @@ const ShowForm = props => {
             setShow({venue: show.venue, city: e.target.value, date: show.date, price: show.price})
         }
         if(e.target.name == "date"){
-            setShow({venue: show.venue, city: show.city, date: dateFormatter(e.target.value), price: show.price})
+            setShow({venue: show.venue, city: show.city, date: e.target.value, price: show.price})
         }
         if(e.target.name == "price"){
             setShow({venue: show.venue, city: show.city, date: show.date, price: e.target.value})
@@ -35,26 +35,16 @@ const ShowForm = props => {
         console.log(show);
     }
 
-    const dateFormatter = (d) => {
-        if(loaded){
-        var date = new Date(d)
-        var day = date.getDate()
-        if(date.getDate().toString().length < 2){
-            day = "0"+date.getDate().toString();
-        }
-
-        var output = date.getFullYear()+"-"+ (date.getMonth()+1)+"-"+day+"T"+date.getHours()+":"+date.getMinutes();
-        console.log(output)
-        return output;
-        }
-    }
+    
     
     return (
         <div>
             {loaded && <form onSubmit={(e) => submitHandler(e)} onChange={(e) => onChangeHandler(e)}>
                 <input type="text" name="venue" value={show.venue} />
                 <input type="text" name="city" value={show.city} />
-                <input type="datetime-local" name="date" value={dateFormatter(show.date)} />
+                { show.date ? 
+                <input type="datetime-local" name="date" value={show.date} /> : <input type="datetime-local" name="date" value={currDate.getDate().toString()} />
+                }
                 <input type="text" name="price" value={show.price} />
                 <input type="submit"/>
             </form>

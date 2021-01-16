@@ -38,7 +38,7 @@ module.exports.editShow = (request, response) => {
 }
 
 module.exports.deleteShow = (request, response) => {
-    Show.deleteOne({_id: request.params.id})
+    Show.findOneAndDelete({_id: request.params.id})
     .then(res => response.json(res))
     .catch(err => response.json(err))
 }

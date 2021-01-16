@@ -40,6 +40,7 @@ const EditShow = props => {
         <div className="container">
             <a href="/" onClick={e => logout(e)}>logout</a> | <a href="/" onClick={e => backHandler(e)}>back</a>
             {loaded && login &&
+            
             <ShowForm onSubmitProp={editShow} initShow={show} />}
             {console.log(show)}
         </div>

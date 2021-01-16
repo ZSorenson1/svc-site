@@ -21,9 +21,10 @@ const AboutAdmin = () => {
     
     return (
         <div className="container">
+            <h2>Edit About</h2>
             {loaded && 
             <form onSubmit={(e) => editAbout(e)}>
-                <input type="text" name="about" value={about} onChange={e => setAbout(e.target.value)}/>
+                <textarea className="aboutBox" name="about" value={about} onChange={e => setAbout(e.target.value)}/>
                 <input type="submit"/>
             </form>
             }

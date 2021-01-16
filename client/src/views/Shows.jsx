@@ -12,6 +12,7 @@ const Shows = () => {
         .catch(err => console.log("Something went wrong", err))
     }, [])
     
+    
     return (
         <div className="container">
             <table className="table">

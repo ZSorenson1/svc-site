@@ -21,12 +21,10 @@ const ShowsAdmin = () => {
 
     const deleteShow = (e, id) => {
         e.preventDefault();
-        axios.get("http://localhost:8000/api/shows/"+id+"/delete")
-        .then(res=>setShows(res.data),
+        axios.post("http://localhost:8000/api/shows/"+id+"/delete")
+        .then(res=>setShows(shows.filter(show => show._id != id)),
         setLoaded(true))
         .catch(err => console.log("Something went wrong", err))
-        
-        setShows(shows.filter(show => show._id != id));
     }
 
     const clickHandler = (e, id) => {
@@ -36,6 +34,7 @@ const ShowsAdmin = () => {
 
     return (
         <div className="container">
+            <h2>Update Shows</h2>
             <ShowForm onSubmitProp={addShow} initShow={{venue: "", city: "", date: "", price: ""  }}/>
             <table className="table">
                 <tbody>
