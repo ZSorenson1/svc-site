@@ -5,7 +5,6 @@ const ShowForm = props => {
     const { onSubmitProp, initShow } = props;
     const [ show, setShow ] = useState([])
     const [loaded, setLoaded] = useState(false);
-    const currDate = new Date();
 
     useEffect( () => {
         setShow(initShow) 
@@ -42,9 +41,7 @@ const ShowForm = props => {
             {loaded && <form onSubmit={(e) => submitHandler(e)} onChange={(e) => onChangeHandler(e)}>
                 <input type="text" name="venue" value={show.venue} />
                 <input type="text" name="city" value={show.city} />
-                { show.date ? 
-                <input type="datetime-local" name="date" value={show.date} /> : <input type="datetime-local" name="date" value={currDate.getDate().toString()} />
-                }
+                <input type="datetime-local" name="date" value={show.date} /> 
                 <input type="text" name="price" value={show.price} />
                 <input type="submit"/>
             </form>
