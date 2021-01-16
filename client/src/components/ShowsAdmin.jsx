@@ -21,10 +21,12 @@ const ShowsAdmin = () => {
 
     const deleteShow = (e, id) => {
         e.preventDefault();
-        axios.post("http://localhost:8000/api/shows/"+id+"/delete")
-        .then(res=>setShows(shows.filter(show => show._id != id)),
+        axios.delete("http://localhost:8000/api/shows/"+id+"/delete")
+        .then(res=> console.log(res),
         setLoaded(true))
         .catch(err => console.log("Something went wrong", err))
+        
+        setShows(shows.filter(show => show._id != id));
     }
 
     const clickHandler = (e, id) => {
